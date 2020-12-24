@@ -1,0 +1,6 @@
+{
+  "subset_genotypes.genofiles": ["testfiles/example.bgen", "testfiles/example.bgen"],
+  "subset_genotypes.samplefile": "testfiles/example.sample",
+  "subset_genotypes.variant_file": "testfiles/var_list.txt"
+}
+
