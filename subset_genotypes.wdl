@@ -65,7 +65,7 @@ task concatenate {
 		for f in ${sep=" " files}; do
 			echo $f;
 			/qctool -g base.bgen -merge-in $f ${samplefile} -og concat.bgen;
-			#cp concat.bgen base.bgen
+			cp concat.bgen base.bgen
 		done
 		rm base.bgen
 	>>>
