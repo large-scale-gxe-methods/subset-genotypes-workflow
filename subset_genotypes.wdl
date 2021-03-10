@@ -2,7 +2,8 @@ workflow subset_genotypes {
 
 	Array[File] genofiles
 	File samplefile
-	File variant_file
+	File? variant_rsid_file
+	File? variant_chrpos_file
 	Int? memory = 5
 	Int? disk = 50
 
@@ -11,7 +12,8 @@ workflow subset_genotypes {
 			input:
 				genofile = gf,
 				samplefile = samplefile,
-				variant_file = variant_file,
+				variant_rsid_file = variant_rsid_file,
+				variant_chrpos_file = variant_chrpos_file,
 				memory = memory,
 				disk = disk
 		}
@@ -30,7 +32,8 @@ task subset_files {
 
 	File genofile
 	File samplefile
-	File variant_file
+	File? variant_rsid_file
+	File? variant_chrpos_file
 	Int memory
 	Int disk
 
@@ -38,7 +41,8 @@ task subset_files {
 		/qctool \
 		-g ${genofile} \
 		-s ${samplefile} \
-		-incl-rsids ${variant_file} \
+		${"-incl-rsids " + variant_rsid_file} \
+		${"-incl-positions " + variant_chrpos_file} \
 		-og subset.bgen
 	>>>
 
